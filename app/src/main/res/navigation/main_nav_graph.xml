@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_nav_graph"
+    app:startDestination="@id/tagsFragment">
+
+    <fragment
+        android:id="@+id/tagsFragment"
+        android:name="com.sofclient.tags.TagsFragment"
+        android:label="TagsFragment" >
+        <action
+            android:id="@+id/action_tagsFragment_to_questionsFragment"
+            app:destination="@id/questionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionsFragment"
+        android:name="com.sofclient.questions.QuestionsFragment"
+        android:label="QuestionsFragment" />
+</navigation>

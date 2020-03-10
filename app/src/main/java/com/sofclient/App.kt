@@ -7,6 +7,7 @@ import com.example.data.tagDetails.TagDetailsGateway
 import com.example.data.tagDetails.TagDetailsGatewayImpl
 import com.example.data.tags.TagsGateway
 import com.example.data.tags.TagsGatewayImpl
+import com.example.data.utils.HttpClientUtils
 import com.example.data.utils.SettingsProvider
 import com.example.data.utils.SettingsProviderImpl
 import com.example.domain.questions.QuestionsUseCase
@@ -32,7 +33,6 @@ class App : Application() {
 
     private fun initModules() {
 
-
         val useCaseModule = module {
             single { QuestionsUseCaseImpl(questionsGateway = get()) as QuestionsUseCase}
             single { TagsUseCaseImpl(tagsGateway = get()) as TagsUseCase }
@@ -43,6 +43,7 @@ class App : Application() {
             single { QuestionsGatewayImpl(httpClientUtils = get()) as QuestionsGateway }
             single { TagsGatewayImpl(httpClientUtils = get()) as TagsGateway}
             single { TagDetailsGatewayImpl(httpClientUtils = get()) as TagDetailsGateway}
+            single { HttpClientUtils(settingsProvider = get()) }
         }
 
         val settingsModule = module {

@@ -9,13 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 
 /**
- * Base fragment with [mViewModel]
+ * Base fragment
  */
-abstract class BaseFragment<T, V: BaseViewModel<T>>: Fragment(){
-    lateinit var mViewModel: V
-
-    protected lateinit var data: LiveData<T>
-
+abstract class BaseFragment : Fragment(){
     /**
      * Returns layout id
      */
@@ -23,24 +19,11 @@ abstract class BaseFragment<T, V: BaseViewModel<T>>: Fragment(){
     abstract fun getLayoutId(): Int
 
     /**
-     * Create fragment with init viewModel
-     */
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mViewModel = getViewModel()
-    }
-
-    /**
      * Init view
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(getLayoutId(), container, false)
     }
-
-    /**
-     * Returns viewModel instance
-     */
-    abstract fun getViewModel(): V
 
     /**
      * Sets view listeners
