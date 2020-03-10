@@ -9,7 +9,8 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class QuestionsDataSource(
-    private val questionsInteractor: QuestionsUseCase
+    private val questionsInteractor: QuestionsUseCase,
+    private val tagName : String
 ) :
     ItemKeyedDataSource<Long, Question>() {
 
@@ -21,7 +22,7 @@ class QuestionsDataSource(
         params: LoadInitialParams<Long>,
         callback: LoadInitialCallback<Question>
     ) {
-        val disposable = questionsInteractor.getQuestions("java")
+        val disposable = questionsInteractor.getQuestions(tagName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { questionsEntity ->
@@ -31,7 +32,7 @@ class QuestionsDataSource(
     }
 
     override fun loadAfter(params: LoadParams<Long>, callback: LoadCallback<Question>) {
-        val disposable = questionsInteractor.getQuestions("java")
+        val disposable = questionsInteractor.getQuestions(tagName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { questionsEntity ->

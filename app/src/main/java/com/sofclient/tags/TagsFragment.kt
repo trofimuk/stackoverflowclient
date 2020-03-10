@@ -2,6 +2,7 @@ package com.sofclient.tags
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -61,7 +62,9 @@ class TagsFragment : BaseFragment(), TagsPagedAdapter.OnItemClickListener {
 
     private fun populateTagsAdapter(){
         tagsViewModel.tagsListLiveData
-            .observe(this, Observer<PagedList<Tag>> { tagsAdapter.submitList(it) })
+            .observe(this, Observer<PagedList<Tag>> {
+                tagsAdapter.submitList(it)
+            })
     }
 
     override fun onItemClick(position: Int) {
