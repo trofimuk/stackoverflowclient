@@ -7,7 +7,7 @@ class QuestionsGatewayImpl(
     private val httpClientUtils: HttpClientUtils
 ) : QuestionsGateway {
 
-    override fun getQuestions(): Observable<QuestionsResponse> {
-        return httpClientUtils.instance.getQuestions()
+    override fun getQuestions(tagName : String): Observable<QuestionsResponse> {
+        return httpClientUtils.instance.getQuestions(tagName)
     }
 }

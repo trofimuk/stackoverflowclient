@@ -1,3 +1,7 @@
 package com.example.domain.questions
 
- class QuestionsEntity
+import com.example.data.questions.Question
+
+data class QuestionsEntity(
+    val items: ArrayList<Question>
+)

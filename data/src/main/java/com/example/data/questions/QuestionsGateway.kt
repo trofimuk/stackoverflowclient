@@ -5,5 +5,5 @@ import io.reactivex.Observable
 
 interface QuestionsGateway {
 
-    fun getQuestions() : Observable<QuestionsResponse>
+    fun getQuestions(tagName : String) : Observable<QuestionsResponse>
 }

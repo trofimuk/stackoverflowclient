@@ -6,11 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.data.questions.Question
 import com.sofclient.R
+import kotlinx.android.synthetic.main.questions_item.view.*
 
 class QuestionHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bindTo(question: Question?){
-//        itemView.tvUserLogin.text = user?.login
+        itemView.tvTitle.text = question?.title
+        itemView.tvId.text = question?.question_id.toString()
     }
 
     companion object {

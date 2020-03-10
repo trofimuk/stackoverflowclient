@@ -1,5 +1,6 @@
 package com.example.data.questions
 
 data class Question(
-    val id: Long
+    val question_id: Long,
+    val title: String? = null
 )

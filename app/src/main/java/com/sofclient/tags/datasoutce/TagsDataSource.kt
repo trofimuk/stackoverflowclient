@@ -43,10 +43,11 @@ class TagsDataSource(val tagsInteractor: TagsUseCase) : ItemKeyedDataSource<Long
     override fun getKey(item: Tag): Long = item.id
 
     private fun transform(tagEntity: TagsEntity): MutableList<Tag>{
-        val userList = ArrayList<Tag>()
+        val tagList = ArrayList<Tag>()
         tagEntity.items.forEach{
-            userList.add(Tag(it.id, it.name, it.count))
+            tagList.add(Tag(it.id, it.name, it.count))
         }
-        return userList
+        tagList.sortWith(compareBy{it.count?.toInt()})
+        return tagList
     }
 }

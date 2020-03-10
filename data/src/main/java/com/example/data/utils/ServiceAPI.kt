@@ -33,6 +33,6 @@ interface ServiceAPI {
      * Returns questions
      */
     @GET("/questions?order=desc&sort=activity&site=stackoverflow")
-    fun getQuestions(): Observable<QuestionsResponse>
+    fun getQuestions(@Query("tagged") tagName : String): Observable<QuestionsResponse>
 
 }

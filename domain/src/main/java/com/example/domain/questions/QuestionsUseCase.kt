@@ -4,5 +4,5 @@ import io.reactivex.Observable
 
 interface QuestionsUseCase {
 
-    fun getQuestions() : Observable<QuestionsEntity>
+    fun getQuestions(tagName: String) : Observable<QuestionsEntity>
 }
