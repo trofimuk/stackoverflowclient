@@ -23,10 +23,8 @@ class  QuestionsViewModel : BaseViewModel(), KoinComponent {
 
     val questionsListLiveData: LiveData<PagedList<Question>>
 
-    private var tagName: String? = null
-
     private val sourceFactory: QuestionsDataSourceFactory =
-        QuestionsDataSourceFactory(questionsInteractor, tagName!!)
+        QuestionsDataSourceFactory(questionsInteractor)
 
     private val pageSize = 20
 
@@ -38,9 +36,5 @@ class  QuestionsViewModel : BaseViewModel(), KoinComponent {
             .build()
 
         questionsListLiveData = LivePagedListBuilder<Long, Question>(sourceFactory, config).build()
-    }
-
-    fun setTagName(tagName : String){
-        this.tagName = tagName
     }
 }

@@ -2,18 +2,21 @@ package com.sofclient.questions.datasource
 
 import androidx.paging.ItemKeyedDataSource
 import com.example.data.questions.Question
+import com.example.data.utils.StorageUtils
 import com.example.domain.questions.QuestionsEntity
 import com.example.domain.questions.QuestionsUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
 class QuestionsDataSource(
-    private val questionsInteractor: QuestionsUseCase,
-    private val tagName : String
+    private val questionsInteractor: QuestionsUseCase
 ) :
-    ItemKeyedDataSource<Long, Question>() {
+    ItemKeyedDataSource<Long, Question>(), KoinComponent {
 
+    val storage : StorageUtils by inject()
     companion object {
         val allCompositeDisposable: MutableList<Disposable> = arrayListOf()
     }
@@ -22,7 +25,7 @@ class QuestionsDataSource(
         params: LoadInitialParams<Long>,
         callback: LoadInitialCallback<Question>
     ) {
-        val disposable = questionsInteractor.getQuestions(tagName)
+        val disposable = questionsInteractor.getQuestions(storage.getTagName())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { questionsEntity ->
@@ -32,7 +35,7 @@ class QuestionsDataSource(
     }
 
     override fun loadAfter(params: LoadParams<Long>, callback: LoadCallback<Question>) {
-        val disposable = questionsInteractor.getQuestions(tagName)
+        val disposable = questionsInteractor.getQuestions(storage.getTagName())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { questionsEntity ->

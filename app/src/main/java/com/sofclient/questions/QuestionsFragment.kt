@@ -1,10 +1,7 @@
 package com.sofclient.questions
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.PagedList
@@ -13,9 +10,7 @@ import com.example.data.questions.Question
 import com.sofclient.R
 import com.sofclient.adapters.QuestionsPagedAdapter
 import com.sofclient.base.BaseFragment
-import com.sofclient.tags.TagsFragment.Companion.TAG_NAME_VALUE
 import kotlinx.android.synthetic.main.questions_fragment.*
-import kotlinx.android.synthetic.main.tags_fragment.*
 
 class QuestionsFragment : BaseFragment() {
 
@@ -23,21 +18,10 @@ class QuestionsFragment : BaseFragment() {
 
     private lateinit var questionsAdapter: QuestionsPagedAdapter
 
-    private var name: String? = null
-
     override fun getLayoutId() = R.layout.questions_fragment
 
     private fun initViewModel() {
         questionsViewModel = ViewModelProvider(this).get(QuestionsViewModel::class.java)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        name = arguments?.getString(TAG_NAME_VALUE)
-        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,8 +43,6 @@ class QuestionsFragment : BaseFragment() {
         initViewModel()
         initQuestionsAdapter()
         populateUserAdapter()
-        name?.let { questionsViewModel.setTagName(it) }
-
         //setListeners()
     }
 

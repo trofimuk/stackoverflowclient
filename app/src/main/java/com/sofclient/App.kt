@@ -10,6 +10,7 @@ import com.example.data.tags.TagsGatewayImpl
 import com.example.data.utils.HttpClientUtils
 import com.example.data.utils.SettingsProvider
 import com.example.data.utils.SettingsProviderImpl
+import com.example.data.utils.StorageUtils
 import com.example.domain.questions.QuestionsUseCase
 import com.example.domain.questions.QuestionsUseCaseImpl
 import com.example.domain.tagDetails.TagDetailsUseCase
@@ -33,16 +34,20 @@ class App : Application() {
 
     private fun initModules() {
 
+        val storageModule = module {
+            single { StorageUtils(this@App) }
+        }
+
         val useCaseModule = module {
-            single { QuestionsUseCaseImpl(questionsGateway = get()) as QuestionsUseCase}
+            single { QuestionsUseCaseImpl(questionsGateway = get()) as QuestionsUseCase }
             single { TagsUseCaseImpl(tagsGateway = get()) as TagsUseCase }
-            single { TagDetailsUseCaseImpl(tagDetailsGateway = get()) as TagDetailsUseCase}
+            single { TagDetailsUseCaseImpl(tagDetailsGateway = get()) as TagDetailsUseCase }
         }
 
         val dataGatewayModule = module {
             single { QuestionsGatewayImpl(httpClientUtils = get()) as QuestionsGateway }
-            single { TagsGatewayImpl(httpClientUtils = get()) as TagsGateway}
-            single { TagDetailsGatewayImpl(httpClientUtils = get()) as TagDetailsGateway}
+            single { TagsGatewayImpl(httpClientUtils = get()) as TagsGateway }
+            single { TagDetailsGatewayImpl(httpClientUtils = get()) as TagDetailsGateway }
             single { HttpClientUtils(settingsProvider = get()) }
         }
 
@@ -51,7 +56,7 @@ class App : Application() {
         }
 
         startKoin {
-            modules(listOf(useCaseModule, dataGatewayModule, settingsModule))
+            modules(listOf(useCaseModule, dataGatewayModule, settingsModule, storageModule))
         }
     }
 
