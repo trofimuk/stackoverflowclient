@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "586938810614",
+    "firebase_url": "https://sofagent.firebaseio.com",
+    "project_id": "sofagent",
+    "storage_bucket": "sofagent.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586938810614:android:41ab9c9200d1b474b66cd7",
+        "android_client_info": {
+          "package_name": "com.sofclient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586938810614-s8dqqjd07j0le4iemt6p54g8m7mnqd4u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwi-5LAqrUM2C5WCkQeeqEnQR3Nbqk3qw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "586938810614-s8dqqjd07j0le4iemt6p54g8m7mnqd4u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
