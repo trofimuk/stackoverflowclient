@@ -14,6 +14,11 @@ class TagHolder(itemView: View) :
     fun bindTo(tag: Tag?) {
         itemView.tvName.text = tag?.name
         itemView.tvCount.text = tag?.count
+        if(tag?.name == "android"){
+            itemView.ivIcon.visibility = View.VISIBLE
+        }else{
+            itemView.ivIcon.visibility = View.GONE
+        }
     }
 
     companion object {
