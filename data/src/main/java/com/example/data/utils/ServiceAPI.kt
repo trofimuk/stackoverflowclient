@@ -32,7 +32,7 @@ interface ServiceAPI {
     /**
      * Returns questions
      */
-    @GET("/questions?order=desc&sort=popular&site=stackoverflow")
+    @GET("/questions?order=desc&sort=activity&site=stackoverflow")
     fun getQuestions(@Query("tagged") tagName : String): Observable<QuestionsResponse>
 
 }
