@@ -3,4 +3,7 @@
 
     //errors
     <string name="text_error">Error</string>
+    <string name="text_error_airplane_mode">Turn off airplane mode and return to the app</string>
+
+
 </resources>

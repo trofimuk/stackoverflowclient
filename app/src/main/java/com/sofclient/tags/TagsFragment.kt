@@ -46,7 +46,12 @@ class TagsFragment : BaseFragment(), TagsPagedAdapter.OnItemClickListener {
 
         initViewModel()
         initTagsAdapter()
-        populateTagsAdapter()
+
+        if(isAirplaneModeOn(activity!!)){
+            displayAirPlaneError(getString(R.string.text_error_airplane_mode))
+        }else{
+            populateTagsAdapter()
+        }
         //setListeners()
     }
 

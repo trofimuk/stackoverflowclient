@@ -1,15 +1,16 @@
 package com.sofclient.base
 
 import android.app.AlertDialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import com.sofclient.R
 
 /**
@@ -74,5 +75,27 @@ abstract class BaseFragment : Fragment(){
             }
             .create()
         errorDialog.show()
+    }
+
+    protected fun displayAirPlaneError(message: String?){
+        val errorDialog = AlertDialog.Builder(context)
+            .setTitle(getString(R.string.text_error))
+            .setMessage(message)
+            .setCancelable(false)
+            .setPositiveButton(android.R.string.yes) { dialog, _ ->
+                dialog.dismiss()
+                activity?.finish()
+            }
+            .create()
+        errorDialog.show()
+    }
+
+
+
+    protected fun isAirplaneModeOn(context: Context): Boolean {
+        return Settings.System.getInt(
+            context.contentResolver,
+            Settings.Global.AIRPLANE_MODE_ON, 0
+        ) !== 0
     }
 }
