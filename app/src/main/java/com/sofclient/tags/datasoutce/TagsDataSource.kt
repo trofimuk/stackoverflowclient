@@ -47,7 +47,6 @@ class TagsDataSource(val tagsInteractor: TagsUseCase) : ItemKeyedDataSource<Long
         tagEntity.items.forEach{
             tagList.add(Tag(it.id, it.name, it.count))
         }
-        tagList.sortWith(compareBy{it.count?.toInt()})
         return tagList
     }
 }
