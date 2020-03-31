@@ -1,7 +1,5 @@
 package com.sofclient.tags
 
-import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -28,11 +26,6 @@ class TagsFragment : BaseFragment(), TagsPagedAdapter.OnItemClickListener {
     override fun getLayoutId() = R.layout.tags_fragment
 
     private lateinit var navController: NavController
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initUi()
-    }
 
     private fun initViewModel() {
         tagsViewModel = ViewModelProvider(this).get(TagsViewModel::class.java)

@@ -1,7 +1,5 @@
 package com.sofclient.questions
 
-import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.PagedList
@@ -22,11 +20,6 @@ class QuestionsFragment : BaseFragment() {
 
     private fun initViewModel() {
         questionsViewModel = ViewModelProvider(this).get(QuestionsViewModel::class.java)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initUi()
     }
 
     private fun initQuestionsAdapter(){
