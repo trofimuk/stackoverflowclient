@@ -7,12 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.data.questions.Question
 import com.sofclient.R
 import kotlinx.android.synthetic.main.questions_item.view.*
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class QuestionHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bindTo(question: Question?){
         itemView.tvTitle.text = question?.title
-        itemView.tvId.text = question?.question_id.toString()
+        itemView.tvName.text = question?.owner?.authorName
+        itemView.tvDate.text = convertLongToTime(question?.date!!.toLong())
     }
 
     companion object {
@@ -21,5 +25,10 @@ class QuestionHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
             val view = layoutInflater.inflate(R.layout.questions_item, parent,false)
             return QuestionHolder(view)
         }
+    }
+
+    private fun convertLongToTime(time: Long): String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        return sdf.format(Date(time * 1000))
     }
 }

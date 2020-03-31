@@ -53,7 +53,7 @@ class QuestionsDataSource(
     private fun transform(questionsEntity: QuestionsEntity): MutableList<Question> {
         val questionList = ArrayList<Question>()
         questionsEntity.items.forEach {
-            questionList.add(Question(it.question_id, it.title))
+            questionList.add(Question(question_id = it.question_id, title = it.title, owner = it.owner, date = it.date))
         }
         return questionList
     }
