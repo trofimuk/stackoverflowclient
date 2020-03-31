@@ -20,7 +20,7 @@ interface ServiceAPI {
     /**
      * Returns tags
      */
-    @GET("/tags?order=desc&sort=activity&site=stackoverflow")
+    @GET("/tags?order=desc&sort=popular&site=stackoverflow")
     fun getTags(): Observable<TagsResponse>
 
     /**
@@ -32,7 +32,7 @@ interface ServiceAPI {
     /**
      * Returns questions
      */
-    @GET("/questions?order=desc&sort=activity&site=stackoverflow")
+    @GET("/questions?order=desc&sort=popular&site=stackoverflow")
     fun getQuestions(@Query("tagged") tagName : String): Observable<QuestionsResponse>
 
 }
