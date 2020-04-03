@@ -63,8 +63,12 @@ class TagsFragment : BaseFragment(), TagsPagedAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        storage.saveTagName(tagsAdapter.currentList?.get(position)?.name!!)
-        navController.navigate(
-            R.id.questionsFragment, null, navOptions { this.launchSingleTop = true })
+        if(isAirplaneModeOn(activity!!)){
+            displayAirPlaneError(getString(R.string.text_error_airplane_mode))
+        }else{
+            storage.saveTagName(tagsAdapter.currentList?.get(position)?.name!!)
+            navController.navigate(
+                R.id.questionsFragment, null, navOptions { this.launchSingleTop = true })
+        }
     }
 }
